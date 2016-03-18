@@ -145,7 +145,7 @@ namespace projeto.Controllers
         [HttpPost]
         public ActionResult Buy(int id, ProdutoPedidoModel produtoPedidoModel, int promocao)
         {
-            
+            return RedirectToAction("Index");
         }
 
     }
