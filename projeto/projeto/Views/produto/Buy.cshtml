@@ -1,0 +1,105 @@
+﻿@model projeto.Models.ProdutoPedidoModel
+@using System.Web.Optimization
+@Scripts.Render("~/Scripts/jquery")
+
+@{
+    ViewBag.Title = "Buy";
+}
+
+<h2>Comprar</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <fieldset>
+
+            <legend>Informações do Produto</legend>
+
+            @Html.HiddenFor(model => model.Produto.Id)
+            @Html.HiddenFor(model => model.Produto.Nome)
+            @Html.HiddenFor(model => model.Produto.Valor)
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Produto.Nome) :
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Produto.Nome)
+            </div>
+
+            <br />
+
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Produto.Valor) :
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Produto.Valor)
+            </div>
+            <br />
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Adicionar promoção</legend>
+
+            <input type="radio" name="promocao" id="radio-choice-v-2a" value="1" checked="checked">
+            <label for="radio-choice-v-2a">Sem promoção</label>
+            <input type="radio" name="promocao" id="radio-choice-v-2b" value="2">
+            <label for="radio-choice-v-2b">Pague 1 e Leve 2</label>
+            <input type="radio" name="promocao" id="radio-choice-v-2c" value="3">
+            <label for="radio-choice-v-2c">3 por 10</label>
+
+        </fieldset>
+
+        <fieldset>
+
+            <legend>Finalizar compra</legend>
+
+            <div id="divQtdLbl" class"display-label">
+                Quantidade:
+            </div>
+
+            <div id="divQtd" class="editor-field">
+                @Html.EditorFor(model => model.Quantidade)
+                @Html.ValidationMessageFor(model => model.Quantidade)
+            </div>
+
+        <p>
+            <input type="submit" value="Adicionar ao carrinho" />
+        </p>
+
+        </fieldset>
+
+    </fieldset>
+    
+}
+
+<p>
+    @Html.ActionLink("Voltar para a lista", "Index")
+</p>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        console.log('entrou aqui.');
+
+        $("input[type=radio][name=promocao]").click(function (e) {
+
+            if ($('input[name=promocao]:checked').val() == 1) {
+
+                $("#divQtd").show("slow", function () { });
+                $("#divQtdLbl").show("slow", function () { });
+
+            } else {
+                $("#divQtd").hide("slow", function () { });
+                $("#divQtdLbl").hide("slow", function () { });
+            }
+
+        });
+
+    });
+
+</script>

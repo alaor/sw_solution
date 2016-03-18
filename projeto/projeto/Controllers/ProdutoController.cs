@@ -10,6 +10,7 @@ namespace projeto.Controllers
 {
     public class ProdutoController : Controller
     {
+
         public ActionResult Index()
         {
             using (ISession session = NHibertnateSession.OpenSession())
@@ -24,7 +25,6 @@ namespace projeto.Controllers
         {
             return View();
         }
-
 
         [HttpPost]
         public ActionResult Create(Produto produto)
@@ -104,8 +104,8 @@ namespace projeto.Controllers
         {
             using (ISession session = NHibertnateSession.OpenSession())
             {
-                var employee = session.Get<Produto>(id);
-                return View(employee);
+                var produto = session.Get<Produto>(id);
+                return View(produto);
             }
         }
 
@@ -128,6 +128,24 @@ namespace projeto.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult Buy(int id)
+        {
+
+            var produtoPedidoModel = new ProdutoPedidoModel { };
+
+            using (ISession session = NHibertnateSession.OpenSession())
+            {
+                produtoPedidoModel.Produto = session.Get<Produto>(id);
+                return View(produtoPedidoModel);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Buy(int id, ProdutoPedidoModel produtoPedidoModel, int promocao)
+        {
+            
         }
 
     }
