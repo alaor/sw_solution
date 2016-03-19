@@ -42,4 +42,3 @@ C:\Users\Alaor\Documents\projetos\sw_solution\projeto\projeto\bin\pt-br\System.W
 C:\Users\Alaor\Documents\projetos\sw_solution\projeto\projeto\bin\pt-br\System.Web.WebPages.Razor.resources.dll
 C:\Users\Alaor\Documents\projetos\sw_solution\projeto\projeto\obj\Debug\projeto.dll
 C:\Users\Alaor\Documents\projetos\sw_solution\projeto\projeto\obj\Debug\projeto.pdb
-C:\Users\Alaor\Documents\projetos\sw_solution\projeto\projeto\obj\Debug\projeto.csprojResolveAssemblyReference.cache

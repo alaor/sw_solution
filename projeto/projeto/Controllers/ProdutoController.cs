@@ -5,11 +5,14 @@ using NHibernate.Linq;
 using System.Linq;
 using projeto.Models;
 using NhibernateMVC.Models;
+using System.Collections.Generic;
 
 namespace projeto.Controllers
 {
     public class ProdutoController : Controller
     {
+
+        public static List<ProdutoPedidoModel> pedidos = new List<ProdutoPedidoModel>();
 
         public ActionResult Index()
         {
@@ -145,8 +148,17 @@ namespace projeto.Controllers
         [HttpPost]
         public ActionResult Buy(int id, ProdutoPedidoModel produtoPedidoModel, int promocao)
         {
-            return RedirectToAction("Index");
+
+            pedidos.Add(new ProdutoPedidoModel().adicionaPedido(produtoPedidoModel, promocao));
+
+            Console.WriteLine(pedidos);
+
+            return RedirectToAction("Checkout");
         }
 
+        public ActionResult Checkout()
+        {
+            return View(pedidos);
+        }
     }
 }

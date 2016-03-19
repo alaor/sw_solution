@@ -1,0 +1,61 @@
+﻿@model IEnumerable<projeto.Models.ProdutoPedidoModel>
+
+@{
+    ViewBag.Title = "Checkout";
+    float totalPagar = 0;
+}
+
+<h2>Checkout</h2>
+
+<table>
+    <tr>
+        <th>
+            Item
+        </th>
+        <th>
+            Quantidade
+        </th>
+        <th>
+            Preço
+        </th>
+        <th>
+            Promoção
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+
+    totalPagar += item.ValorFinal;
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produto.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantidade)
+        </td>
+        <td>
+            R$ @Html.DisplayFor(modelItem => item.ValorFinal)
+        </td>
+        <td align="rigth">
+            @Html.DisplayFor(modelItem => item.DescricaoPromocao)
+        </td>
+    </tr>
+}
+
+</table>
+
+    <br />
+
+    <div class="display-label">
+        Total a pagar:
+    </div>
+
+    <div id="totalPagar" class="editor-field">
+    R$ @totalPagar
+    </div>
+
+<p>
+    @Html.ActionLink("Continuar comprando", "Index")
+</p>

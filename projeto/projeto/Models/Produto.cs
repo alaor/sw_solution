@@ -9,6 +9,6 @@ namespace projeto.Models
     {
         public virtual int Id { get; set; }
         public virtual string Nome { get; set; }
-        public virtual string Valor { get; set; }
+        public virtual float Valor { get; set; }
     }
 }
