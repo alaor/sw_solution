@@ -151,8 +151,6 @@ namespace projeto.Controllers
 
             pedidos.Add(new ProdutoPedidoModel().adicionaPedido(produtoPedidoModel, promocao));
 
-            Console.WriteLine(pedidos);
-
             return RedirectToAction("Checkout");
         }
 
@@ -160,5 +158,14 @@ namespace projeto.Controllers
         {
             return View(pedidos);
         }
+
+        
+        public ActionResult RemoverPedido(String nome, String promocao)
+        {
+            ProdutoPedidoModel pedidoRemover = new ProdutoPedidoModel().findByNomePromocao(nome, promocao, pedidos);
+            pedidos.Remove(pedidoRemover);
+            return RedirectToAction("Checkout");
+        }
+
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Collections.Generic;
 
 namespace projeto.Models
 {
@@ -40,6 +39,23 @@ namespace projeto.Models
             }
 
             return produtoPedidoModel;
+        }
+
+        public ProdutoPedidoModel findByNomePromocao(String nome, String promocao, List<ProdutoPedidoModel> list)
+        {
+            ProdutoPedidoModel pedidoRemover = null;
+
+            foreach (ProdutoPedidoModel p in list)
+            {
+                if(p.DescricaoPromocao.Equals(promocao) && p.Produto.Nome.Equals(nome))
+                {
+                    pedidoRemover = p;
+
+                }
+                
+            }
+
+            return pedidoRemover;
         }
 
 

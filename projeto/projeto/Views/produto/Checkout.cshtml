@@ -21,6 +21,7 @@
         <th>
             Promoção
         </th>
+        <th></th>
         
     </tr>
 
@@ -38,8 +39,11 @@
         <td>
             R$ @Html.DisplayFor(modelItem => item.ValorFinal)
         </td>
-        <td align="rigth">
+        <td>
             @Html.DisplayFor(modelItem => item.DescricaoPromocao)
+        </td>
+        <td>
+            @Html.ActionLink("Remover", "RemoverPedido", new { nome=item.Produto.Nome, promocao=item.DescricaoPromocao })
         </td>
     </tr>
 }
